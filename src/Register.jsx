@@ -124,6 +124,30 @@ function Register() {
                 <span aria-label='percent'>%</span>
    
             </p>
+            <label htmlFor="confirm_pwd">
+                Confirm Password
+                <span className={validMatch && matchPwd? "valid" : "hide"}>
+                    <FontAwesomeIcon icon={faCheck}/>
+                </span>
+                <span className={validMatch || !matchPwd ? "hide": "invalid"}>
+                    <FontAwesomeIcon icon={faInfoCircle}/>
+                </span>
+            </label>
+            <input 
+            type='password'
+            id= "confirm_pwd"
+            onChange={(e)=> setMatchPwd(e.target.value)}
+            required
+            aria-invalid = {validPwd ? "false" : "true"}
+            aria-describedby='confirmnote'
+            onFocus={()=> setMatchFocus(true)}
+            onBlur={()=> setMatchFocus(false)}
+            />
+            <p id='confirmnote' className={matchFocus && !validMatch ? "instructions" : "offscreen"}>
+                <FontAwesomeIcon icon={faInfoCircle}/>
+                must match the first password input field
+
+            </p>
 
         </form>
     </section>
