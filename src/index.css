@@ -14,20 +14,19 @@ html {
 
 body {
     min-height: 100vh;
+    max-width: 100%;
     background-color: dodgerblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .App {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; 
-  padding: 1rem 0.5rem;
+    width: 100%;
+    max-width: 420px;
 }
 
 section {
-    width: 100%;
     max-width: 420px;
     min-height: 400px;
     display: flex;
@@ -35,6 +34,7 @@ section {
     justify-content: flex-start;
     padding: 1rem;
     background-color: rgba(0,0,0,0.4);
+    margin: 0 auto;
 }
 
 form {

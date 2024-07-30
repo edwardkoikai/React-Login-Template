@@ -59,12 +59,35 @@ function Register() {
    useEffect(()=>{
     setErrMsg('')
    }, [user, pwd, matchPwd])
+
+   const handleSubmit =  async (e) => {
+    e.preventDefault()
+    // if button enabled with Js hack
+    const v1 = USER_REGEX.test(user)
+    const v2 = PWD_REGEX.test(pwd)
+    if (!v1 || !v2){
+        setErrMsg("Invalid Entry")
+        return;
+    }
+    console.log(user, pwd)
+    setSuccess(true)
+   }
     
   return (
+    <>
+    {success ? (
+        <section>
+            <h1>Success</h1>
+            <p>
+                <a href="#">Sign in</a>
+            </p>
+        </section>
+        
+    ) : (
     <section>
         <p className={errMsg ? "errmsg" : "offscreen"}>{errMsg}</p>
         <h1>Register</h1>
-        <form>
+        <form onSubmit={handleSubmit}>
             <label htmlFor="username">
                 Username:
                 <span className={validName? "valid" : "hide"}>
@@ -148,9 +171,20 @@ function Register() {
                 must match the first password input field
 
             </p>
-
+            <button disabled = {!validName || !validPwd || !validMatch ? true : false}>
+                Sign up
+            </button>
         </form>
+        <p>
+            Already registered? <br />
+            <span className='line'>
+                {/* react router link */}
+                <a href="#">Sign in</a>
+            </span>
+        </p>
     </section>
+    )}
+    </>
   )
 }
 
