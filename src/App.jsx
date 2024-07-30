@@ -1,9 +1,11 @@
-import Register from './Register'
+import React from "react"
+import Register from "./Register"
 
 function App() {
-  <main className='App'>
-    <Register />
-
-  </main>
+  return(
+    <main>
+      <Register />
+    </main>
+  )
 }
 export default App
